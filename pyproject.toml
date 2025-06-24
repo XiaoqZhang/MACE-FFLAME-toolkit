@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fflame"
+version = "0.1.0"
+description = "Toolkit for fine-tuning MACE"
+authors = [
+    {name = "Xiaoqi", email = "xiaoqi.zhang@epfl.ch"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "moffragmentor",
+    "dscribe>2.1",
+    "scikit-learn>=1.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/XiaoqZhang/fflame"
+
+[tool.setuptools.packages.find]
+where = ["fflame"]
