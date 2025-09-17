@@ -9,14 +9,18 @@ Example
 >>> linker = scissors.extract_linkers(index=0, threshold=2.0, returntype="ase")
 >>> flag, optimized_linker = scissors.optimize_linker(linker, keep_origin=False, method="vesta")
 """
+import os
+import random
+import time
+from typing import Union, Tuple
+import yaml
 
+import numpy as np
+from ase import Atoms
 from moffragmentor import MOF
 from ase.io import read, write
 from pymatgen.io.ase import AseAtomsAdaptor
 from pymatgen.core import Structure, Lattice
-from ase import Atoms
-import numpy as np
-import time
 from mofchecker.checks.local_structure.add_hydrogen import O_site_adding_hydrogen
 from xtb.ase.calculator import XTB
 from ase.optimize.lbfgs import LBFGS
@@ -24,11 +28,9 @@ from ase.constraints import FixAtoms
 from ase.md.langevin import Langevin
 from ase.md.velocitydistribution import MaxwellBoltzmannDistribution
 from ase import units
-import yaml
 from pymatgen.analysis.local_env import CutOffDictNN, CrystalNN
 from pymatgen.analysis.graphs import StructureGraph
-import os
-import random
+
 file_folder = os.path.dirname(os.path.abspath(__file__))
 
 with open(os.path.join(file_folder, "../data/tuned_vesta.yml"), "r", encoding="utf8") as handle:
